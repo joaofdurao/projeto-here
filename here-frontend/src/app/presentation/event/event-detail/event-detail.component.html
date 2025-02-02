@@ -1,0 +1,51 @@
+<div class="px-5 pt-10">
+  <app-qr-code-modal *ngIf="showQrCodeModal" [qrCodeUrl]="qrCodeUrl" (closeModal)="closeQrCodeModal()"></app-qr-code-modal>
+
+  <span class="flex font-bold text-3xl">{{ event.title }}</span>
+
+    <span class="flex flex-nowrap items-start mt-6">
+      <i class="pi pi-clock mt-2 mr-2"></i>
+      <div>
+        <p class="text-xl">{{ formatarDiaSemanaHora(event.date) }}</p>
+        <p>{{ formatarDataMes(event.date) }}</p>
+      </div>
+    </span>
+
+    <span class="flex flex-nowrap items-center mt-2">
+      <i class="pi pi-map-marker mr-2"></i>
+      <p class="text-xl">{{ event.place }}</p>
+    </span>
+
+    <span class="flex flex-nowrap text-xl ml-6 mt-2">
+      <p class="font-bold mr-1">Curso:</p>
+      {{ event.course }}
+    </span>
+
+    <span class="flex flex-col text-xl ml-6 mt-2">
+      <p class="font-bold mb-1">Palestrante:</p>
+      {{ event.speaker }}
+    </span>
+
+    <span class="flex flex-nowrap text-lg ml-6 mb-2">
+      {{ event.speakerJob }}
+    </span>
+  </div>
+
+  <p-divider></p-divider>
+  <div class="px-5">
+  <span class="flex text-xl mt-2">
+    <p class="font-bold mb-6">Descrição do evento:</p>
+  </span>
+  <p class="flex text-start text-base">{{ event.description }}</p>
+</div>
+
+@if(!isUserSubscribed) {
+  <button pButton type="button" class="fixed-button fixed-container bg-blue-secundary" (click)="subscribeEvent()">Inscrever-se</button>
+} @else {
+  <div class="fixed-container flex flex-row justify-between">
+  <button pButton type="button" class="flex flex-nowrap fixed-button bg-coral whitespace-nowrap mr-2" (click)="unSubscribeEvent()">Cancelar inscrição</button>
+  <button pButton type="button" class="flex flex-nowrap fixed-button bg-green-primary whitespace-nowrap ml-2" (click)="generateQRCode()">Presença</button>
+</div>
+}
+
+

@@ -1,0 +1,91 @@
+<div header body class="flex flex-1 bg-gradient-to-tl from-blue-primary to-coral h-screen items-center justify-center">
+  <div class="login-container flex justify-center">
+    <form class="w-80" [formGroup]="userDetailForm.userForm">
+      <h2 class="mt-10">Perfil</h2>
+
+      <div class="form-group">
+        <span>Nome</span>
+        <input
+          placeholder="Nome"
+          type="text"
+          id="name"
+          formControlName="name"
+          class="form-control h-16 w-full border"
+          pInputText
+        />
+      </div>
+
+      <div class="form-group">
+        <span>Curso</span>
+        <input
+          placeholder="Curso"
+          type="text"
+          id="curso"
+          formControlName="course"
+          class="form-control h-16 w-full border"
+          pInputText
+        />
+      </div>
+
+      <div class="form-group">
+        <span>Email</span>
+        <input
+          placeholder="Email"
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control h-16 w-full border"
+          pInputText
+        />
+        @if (userDetailForm.email?.invalid && userDetailForm.email?.touched) {
+        <span class="error">
+          Email deve ser válido
+        </span>
+        }
+      </div>
+
+      <div class="form-group">
+        <span>Matrícula</span>
+        <input
+          placeholder="Matrícula"
+          type="text"
+          id="matricula"
+          formControlName="registration"
+          class="form-control h-16 w-full border"
+          pInputText
+        />
+      </div>
+
+      <div class="form-group">
+        <span>Senha</span>
+        <input
+          placeholder="Senha"
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-control h-16 w-full border"
+          pInputText
+        />
+      </div>
+
+      <div class="form-group">
+        <span>Repetir senha</span>
+        <input
+          placeholder="Repetir Senha"
+          type="password"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          class="form-control h-16 w-full border"
+          pInputText
+        />
+      </div>
+
+      <div class="grid grid-cols-1 mb-10 mt-4 justify-between">
+        <p-button type="submit" [rounded]="true" class="btn createAccount" size="large" (click)="onSave()">
+          Salvar
+        </p-button>
+      </div>
+
+    </form>
+  </div>
+</div>

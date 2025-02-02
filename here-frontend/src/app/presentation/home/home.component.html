@@ -1,0 +1,48 @@
+<p-table
+        [value]="events"
+        sortField="date"
+        sortMode="single"
+        [scrollable]="true"
+        scrollHeight="flex"
+        rowGroupMode="subheader"
+        groupRowsBy="date">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="w-1/4">Titulo</th>
+                    <th class="w-1/4">Carga horária</th>
+                    <th class="w-1/4">Palestrante</th>
+                    <th class="w-1/4">&nbsp;</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="groupheader" let-events let-rowIndex="rowIndex">
+                <tr pRowGroupHeader>
+                    <td colspan="4">
+                      <span class="self-center font-bold">{{ formatDate(events.date) }}</span>
+
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-events>
+                <tr>
+                    <td>
+                      <div class="max-w-16 max-h-24 overflow-hidden">
+                        <span class="flex flex-wrap">{{ events.title }}</span>
+                    </div>
+                    </td>
+                    <td>
+                        <span>{{events.hourClass }}</span>
+                    </td>
+                    <td>
+                        {{events.speaker}}
+                    </td>
+                    <td>
+                      <button
+                      pButton
+                      type="button"
+                      class="p-button-text p-button-rounded p-button-plain"
+                      [icon]="'pi pi-search'"
+                      (click)="goToEventDetail(events.id)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+    </p-table>

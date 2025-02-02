@@ -1,0 +1,9 @@
+<div class="min-h-screen flex flex-col">
+  @if (!isLoginPage()) {
+
+      <app-header class="h-16"></app-header>
+  }
+  <div class="mt-4">
+  <router-outlet body></router-outlet>
+</div>
+</div>

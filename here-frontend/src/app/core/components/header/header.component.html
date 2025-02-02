@@ -1,0 +1,10 @@
+ <p-tabMenu [model]="items" [activeItem]="activeItem">
+  <ng-template pTemplate="item" let-item>
+        <a [routerLink]="item.route" class="p-menuitem-link">
+            <span [class]="item.icon"></span>
+            <span class="ml-2">
+                {{ item.label }}
+            </span>
+        </a>
+</ng-template>
+ </p-tabMenu>

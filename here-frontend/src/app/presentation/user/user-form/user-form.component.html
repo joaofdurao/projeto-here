@@ -1,0 +1,108 @@
+<div header body class="flex flex-1 bg-gradient-to-tl from-blue-primary to-coral h-screen items-center justify-center">
+  <div class="login-container flex justify-center">
+    <form class="w-80" [formGroup]="createUserForm.userForm">
+      <h2 class="mt-10">Criar Conta</h2>
+
+      <div class="form-group">
+        <span>Nome</span>
+        <input
+          placeholder="Jeferson Silva"
+          type="text"
+          id="name"
+          formControlName="name"
+          class="form-control h-16 w-full border"
+          pInputText
+        />
+
+        @if (createUserForm.name?.invalid && createUserForm.name?.touched) {
+        <span class="error">
+          Nome é obrigatório
+        </span>
+        }
+      </div>
+
+      <div class="form-group">
+        <span>Curso</span>
+        <input
+          placeholder="Engenharia de Software"
+          type="text"
+          id="curso"
+          formControlName="course"
+          class="form-control h-16 w-full border"
+          pInputText
+        />
+
+        @if (createUserForm.course?.invalid && createUserForm.course?.touched) {
+        <span class="error">
+          Curso é obrigatório
+        </span>
+      }
+      </div>
+
+      <div class="form-group">
+        <span>Email</span>
+        <input
+          placeholder="1234567890@faculdadedamas.edu.br"
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control h-16 w-full border"
+          pInputText
+        />
+        @if (createUserForm.email?.invalid && createUserForm.email?.touched) {
+        <span class="error">
+          Email é obrigatório e deve ser válido
+        </span>
+      }
+      </div>
+
+      <div class="form-group">
+        <span>Senha</span>
+        <input
+          placeholder="********"
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-control h-16 w-full border"
+          pInputText
+        />
+        @if (createUserForm.password?.invalid && createUserForm.password?.touched) {
+        <span class="error">
+          Senha é obrigatória
+        </span>
+      }
+      </div>
+
+      <div class="form-group">
+        <span>Repita a senha</span>
+        <input
+          placeholder="********"
+          type="password"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          class="form-control h-16 w-full border"
+          pInputText
+        />
+
+        @if (!isPasswordEquals && createUserForm.password?.touched && createUserForm.confirmPassword?.touched) {
+        <span class="error">
+          As senhas devem coincidir
+        </span>
+        }
+      </div>
+
+      <div class="grid grid-cols-1 mb-10 mt-4 justify-between">
+        <p-button type="submit" [rounded]="true" class="btn createAccount" size="large" (click)="onSubmit()">
+          Criar Conta
+        </p-button>
+      </div>
+        <div class="text-center mt-4">
+          <span class="text-sm">Já tem uma conta?</span>
+          <br>
+          <p-button type="button" [text]="true" class="btn" (onClick)="onCancel()">
+            <strong>Login</strong>
+          </p-button>
+            </div>
+          </form>
+        </div>
+      </div>
